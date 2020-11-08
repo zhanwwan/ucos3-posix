@@ -1,0 +1,21 @@
+name: Ucos3-Posix
+
+on:
+  schedule:
+    - cron: "0 2 * * 1-5"
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: cmake
+      run: cmake .
+    - name: make
+      run: make VERBOSE=0
